@@ -2,6 +2,7 @@ import logging
 from ast import literal_eval
 from functools import cached_property, lru_cache
 from pathlib import Path
+from typing import Dict, Union
 from xml.etree import ElementTree
 
 
@@ -45,7 +46,7 @@ class ProcessJUnit:
             file.write(ElementTree.tostring(element=new_tree, encoding="utf-8").decode())
 
     @cached_property
-    def summary(self) -> dict[str, int]:
+    def summary(self) -> Dict[str, Union[float, int]]:
         self._create_report()
         return self._summary
 

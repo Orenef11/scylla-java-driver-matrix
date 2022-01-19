@@ -69,14 +69,14 @@ class Run:
 
     def run(self) -> ProcessJUnit:
         self._run_command_in_shell("git checkout .")
-        self._run_command_in_shell(f"git checkout origin/{self._tag}")
+        self._run_command_in_shell(f"git checkout {self._tag}")
         self._apply_patch()
         exclude_str = ', '.join(f"!{ignore_element}" for ignore_element in self._ignoreSet())
 
         logging.info("Formatting the Java-driver code after applying the patch")
         self._run_command_in_shell("mvn com.coveo:fmt-maven-plugin:format")
         logging.info("Starting build the version")
-        self._run_command_in_shell("mvn install -DskipTests=true -Dmaven.javadoc.skip=true -V -e")
+        self._run_command_in_shell("mvn install -DskipTests=true -Dmaven.javadoc.skip=true -V")
 
         cmd = f"mvn -B -pl integration-tests -Dtest='{exclude_str}, {self._tests}' test"
         if self._tag.startswith('3.7'):

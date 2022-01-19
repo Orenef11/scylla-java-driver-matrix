@@ -17,7 +17,7 @@ index ebcb74d46..97b31a71a 100644
 +        "code": "java.method.removed",
 +        "old": "method com.datastax.oss.driver.api.testinfra.ccm.CustomCcmRule.Builder com.datastax.oss.driver.api.testinfra.ccm.CustomCcmRule.Builder::withIpPrefix(java.lang.String)",
 +        "justification": "Scylla CCM support"
-+      },
++      }
      ]
    }
  }
