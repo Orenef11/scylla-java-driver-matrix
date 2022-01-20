@@ -13,7 +13,7 @@ class ProcessJUnit:
         self._summary = {"time": 0.0, "tests": 0, "errors": 0, "skipped": 0, "failures": 0}
 
     @lru_cache(maxsize=None)
-    def _create_report(self):
+    def create_report(self):
         if not self.tests_result_path.is_dir():
             raise NotADirectoryError(f"The {self.tests_result_path} directory not exits")
 
@@ -47,7 +47,7 @@ class ProcessJUnit:
 
     @cached_property
     def summary(self) -> Dict[str, Union[float, int]]:
-        self._create_report()
+        self.create_report()
         return self._summary
 
     @cached_property
