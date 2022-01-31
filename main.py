@@ -79,7 +79,7 @@ def get_arguments() -> argparse.Namespace:
                                                'The version is filtered by the major and minor values.'
                                                'For example, the user selects the 2 latest versions for version 4.'
                                                'The values to be returned are: 4.9.0-scylla-1 and 4.8.0-scylla-0',
-                        type=int, default=2, nargs='?')
+                        type=int, default=1, nargs='?')
     arguments = parser.parse_args()
     versions = arguments.versions
     if isinstance(versions, str):
